@@ -1,5 +1,6 @@
 import Banner from "../components/Banner";
 import Navbar from "../components/Navbar";
+import PopularServices from "../components/PopularServices";
 import ServiceCategories from "../components/ServiceCategories";
 
 const Homepage = () => {
@@ -8,6 +9,7 @@ const Homepage = () => {
       <Navbar />
       <Banner />
       <ServiceCategories />
+      <PopularServices />
     </>
   );
 };
