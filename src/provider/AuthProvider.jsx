@@ -20,10 +20,10 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
-  const [theme, setTheme] = useState("cmyk");
+  const [theme, setTheme] = useState("winter");
 
   const toggleTheme = () => {
-    setTheme(theme === "cmyk" ? "business" : "cmyk");
+    setTheme(theme === "winter" ? "dim" : "winter");
   };
 
   useEffect(() => {
