@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { IoPersonCircle } from "react-icons/io5";
 import useAuth from "../hooks/useAuth";
 import Button from "./UI/Button";
+import { FaScrewdriverWrench } from "react-icons/fa6";
 
 const Navbar = () => {
   const { user, logOut, theme, toggleTheme } = useAuth();
@@ -47,11 +48,6 @@ const Navbar = () => {
         <Link to="/signin">
           <Button className="btn btn-xs md:btn-md btn-primary">Sign In</Button>
         </Link>
-        <Link to="/signup">
-          <Button className="btn btn-xs md:btn-md btn-secondary">
-            Sign Up
-          </Button>
-        </Link>
       </div>
     );
 
@@ -68,10 +64,13 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <NavLink to={"/"}>Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <a>Services</a>
+                <NavLink to={"/services"}>Services</NavLink>
+              </li>
+              <li>
+                <a>Dashboard</a>
                 <ul className="p-2">
                   <li>
                     <a>Add Service</a>
@@ -87,43 +86,45 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
-              <li>
-                <NavLink to={"/dashboard"}>Dashboard</NavLink>
-              </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Revive & Rewire</a>
+          <a className="btn btn-ghost text-xl">
+            <FaScrewdriverWrench />
+            Revive & Rewire
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Home</a>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <details>
-                <summary>Services</summary>
-                <ul className="p-2 w-52">
-                  <li>
-                    <a>Add Service</a>
-                  </li>
-                  <li>
-                    <a>Manage Service</a>
-                  </li>
-                  <li>
-                    <a>Booked Services</a>
-                  </li>
-                  <li>
-                    <a>Service To Do</a>
-                  </li>
-                </ul>
-              </details>
+              <NavLink to={"/services"}>Services</NavLink>
             </li>
-            <li>
-              <a>Dashboard</a>
-            </li>
+            {user && (
+              <li>
+                <details>
+                  <summary>Dashboard</summary>
+                  <ul className="p-2 w-52">
+                    <li>
+                      <a>Add Service</a>
+                    </li>
+                    <li>
+                      <a>Manage Service</a>
+                    </li>
+                    <li>
+                      <a>Booked Services</a>
+                    </li>
+                    <li>
+                      <a>Service To Do</a>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            )}
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end space-x-2">
           {logBtns}
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
