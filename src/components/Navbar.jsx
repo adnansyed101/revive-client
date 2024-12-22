@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useEffect } from "react";
-import { IoPersonCircle } from "react-icons/io5";
 import useAuth from "../hooks/useAuth";
 import Button from "./UI/Button";
 import { FaScrewdriverWrench } from "react-icons/fa6";
@@ -13,47 +12,71 @@ const Navbar = () => {
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
 
+  const mainMenu = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/services"}>Services</NavLink>
+      </li>
+    </>
+  );
+
+  const subMenu = (
+    <>
+      <li>
+        <a>Add Service</a>
+      </li>
+      <li>
+        <a>Manage Service</a>
+      </li>
+      <li>
+        <a>Booked Services</a>
+      </li>
+      <li>
+        <a>Service To Do</a>
+      </li>
+    </>
+  );
+
   const logBtns =
     user && user.email ? (
-      <div className="flex gap-1 md:gap-4 items-center">
-        <div className="dropdown dropdown-hover dropdown-bottom dropdown-center mr-10">
-          <div tabIndex={0} role="button">
-            <div className="avatar flex place-items-center">
-              <div className="w-12 rounded-full">
-                {user && user?.photoURL ? (
-                  <img src={user.photoURL} alt="User Image" />
-                ) : (
-                  <IoPersonCircle />
-                )}
-              </div>
-            </div>
+      <div className="dropdown dropdown-end">
+        <div
+          tabIndex={0}
+          role="button"
+          className="btn btn-ghost btn-circle avatar"
+        >
+          <div className="w-10 rounded-full">
+            <img
+              alt="Photo"
+              src={user?.photoURL}
+              referrerPolicy="no-referrer"
+            />
           </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu bg-accent rounded-box z-[1] w-52 p-2 shadow"
-          >
-            <li className="text-center mb-2 font-semibold text-white">
-              {user?.displayName}
-            </li>
-            <li>
-              <button onClick={logOut} className="btn btn-sm btn-secondary">
-                Log Out
-              </button>
-            </li>
-          </ul>
         </div>
+        <ul
+          tabIndex={0}
+          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+        >
+          <li className="text-center">{user?.displayName}</li>
+          <li>
+            <Button onClick={logOut} className="btn btn-warning btn-sm">
+              Logout
+            </Button>
+          </li>
+        </ul>
       </div>
     ) : (
-      <div className="flex flex-col md:flex-row gap-1">
-        <Link to="/signin">
-          <Button className="btn btn-xs md:btn-md btn-primary">Sign In</Button>
-        </Link>
-      </div>
+      <Link to="/signin">
+        <Button className="btn btn-xs md:btn-md btn-primary">Sign In</Button>
+      </Link>
     );
 
   return (
     <header className="w-full fixed top-0 z-50 bg-base-300">
-      <div className="navbar py-0 w-11/12 mx-auto">
+      <div className="navbar py-0 container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -63,28 +86,10 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/services"}>Services</NavLink>
-              </li>
+              {mainMenu}
               <li>
                 <a>Dashboard</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Add Service</a>
-                  </li>
-                  <li>
-                    <a>Manage Service</a>
-                  </li>
-                  <li>
-                    <a>Booked Services</a>
-                  </li>
-                  <li>
-                    <a>Service To Do</a>
-                  </li>
-                </ul>
+                <ul className="p-2">{subMenu}</ul>
               </li>
             </ul>
           </div>
@@ -95,30 +100,12 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to={"/services"}>Services</NavLink>
-            </li>
+            {mainMenu}
             {user && (
               <li>
                 <details>
                   <summary>Dashboard</summary>
-                  <ul className="p-2 w-52">
-                    <li>
-                      <a>Add Service</a>
-                    </li>
-                    <li>
-                      <a>Manage Service</a>
-                    </li>
-                    <li>
-                      <a>Booked Services</a>
-                    </li>
-                    <li>
-                      <a>Service To Do</a>
-                    </li>
-                  </ul>
+                  <ul className="p-2 w-52">{subMenu}</ul>
                 </details>
               </li>
             )}
