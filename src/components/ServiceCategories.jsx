@@ -52,7 +52,7 @@ const ServiceCategories = () => {
               <div className="card-body items-center text-center">
                 <div className="text-5xl mb-4">{category.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{category.name}</h3>
-                <p className="text-gray-600">{category.description}</p>
+                <p className="text-sm">{category.description}</p>
                 <button className="btn btn-primary mt-4">Learn More</button>
               </div>
             </div>
