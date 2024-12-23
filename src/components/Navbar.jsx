@@ -99,7 +99,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 gap-2">
             {mainMenu}
             {user && (
               <li>
