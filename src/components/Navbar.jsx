@@ -26,7 +26,7 @@ const Navbar = () => {
   const subMenu = (
     <>
       <li>
-        <a>Add Service</a>
+        <NavLink to="/addService">Add Service</NavLink>
       </li>
       <li>
         <a>Manage Service</a>
