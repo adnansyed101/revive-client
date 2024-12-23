@@ -4,11 +4,16 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import CreateServices from "../pages/CreateServices";
 import PrivateRoute from "./PrivateRoutes";
+import AllServices from "../pages/AllServices";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Homepage />,
+  },
+  {
+    path: "/services",
+    element: <AllServices />,
   },
   {
     path: "/signin",
