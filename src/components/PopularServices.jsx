@@ -38,24 +38,6 @@ const popularServices = [
     providerImage: "https://via.placeholder.com/50",
     price: "$80",
   },
-  {
-    id: 5,
-    name: "Smartwatch Repair",
-    description: "Expert repairs for all wearable tech devices.",
-    image: "https://via.placeholder.com/150",
-    providerName: "WatchMasters",
-    providerImage: "https://via.placeholder.com/50",
-    price: "$40",
-  },
-  {
-    id: 6,
-    name: "TV Repair",
-    description: "Reliable and affordable TV repair services.",
-    image: "https://via.placeholder.com/150",
-    providerName: "ScreenFix",
-    providerImage: "https://via.placeholder.com/50",
-    price: "$120",
-  },
 ];
 
 const PopularServices = () => {
