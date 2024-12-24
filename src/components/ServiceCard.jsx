@@ -14,14 +14,14 @@ const ServiceCard = ({ service }) => {
       </figure>
       <div className="card-body">
         <h3 className="text-xl font-bold">{name}</h3>
-        <p className="text-gray-600">{description}</p>
+        <p>{description}</p>
         <div className="flex items-center mt-4">
           <img
             src={providerImage}
             alt={providerName}
             className="w-10 h-10 rounded-full border mr-3"
           />
-          <span className="text-gray-700">{providerName}</span>
+          <span>{providerName}</span>
         </div>
         <div className="flex justify-between items-center mt-4">
           <span className="text-lg font-bold text-primary">{price}</span>
