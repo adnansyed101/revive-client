@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Loading from "../components/Loading";
 
 const SignUp = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [showVerifyPwd, setShowVerifyPwd] = useState(false);
-  const { user, createNewUser, setUser, updateUserProfile } = useAuth();
+  const { user, createNewUser, setUser, updateUserProfile, loading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,6 +63,10 @@ const SignUp = () => {
         toast.error(errorCode);
       });
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   if (user && user?.email) {
     return <Navigate to={"/"} />;
