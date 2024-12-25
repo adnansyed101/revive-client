@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../hooks/useAuth";
@@ -9,12 +9,13 @@ import axios from "axios";
 const Booking = () => {
   const serviceData = useLoaderData();
   const service = serviceData.data.data;
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [serviceDate, setServiceDate] = useState(new Date());
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const form = e.target;
 
     const address = form.address.value;
@@ -31,11 +32,13 @@ const Booking = () => {
         email: service.provider.email,
       },
       bookingDetails: {
+        userName: user.displayName,
+        userEmail: user.email,
         serviceID: service._id,
         serviceDate: serviceDate,
         serviceStatus: "pending",
         serviceAddress: address,
-        serviceInstruction: instruction,
+        serviceInstruction: instruction || "No Instructions",
       },
     };
 
@@ -46,6 +49,7 @@ const Booking = () => {
       )
       .then((data) => {
         console.log(data);
+        navigate(`/booked/${user.email}`);
       })
       .catch((err) => console.log(err));
   };
@@ -155,6 +159,7 @@ const Booking = () => {
                 type="text"
                 name="address"
                 className="input input-bordered w-full"
+                required
               />
             </div>
             <div>
