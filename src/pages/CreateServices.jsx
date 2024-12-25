@@ -3,9 +3,13 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Button from "../components/UI/Button";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const CreateServices = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,6 +40,8 @@ const CreateServices = () => {
       )
       .then((data) => {
         console.log(data);
+        navigate(`/services/created/${user.email}`);
+        toast.success("Service Created");
       })
       .catch((err) => console.log(err));
   };
