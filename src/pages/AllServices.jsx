@@ -12,7 +12,6 @@ const AllServices = () => {
     axios
       .get(`${import.meta.env.VITE_SERVERURL}/api/service/all-services`)
       .then((data) => {
-        console.log(data.data.data);
         setServices(data.data.data);
       })
       .catch((err) => console.log(err));
@@ -62,7 +61,7 @@ const AllServices = () => {
                   </span>
                 </div>
                 <div className="card-actions mt-4">
-                  <Link to={`/service/1`}>
+                  <Link to={`/service/${service._id}`}>
                     <Button className="btn btn-primary w-full">
                       View Details
                     </Button>
