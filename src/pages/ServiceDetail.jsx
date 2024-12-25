@@ -10,13 +10,13 @@ const ServiceDetail = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen py-8 mt-20 mb-10">
-        <div className="max-w-4xl mx-auto  shadow-md rounded-lg overflow-hidden">
-          {/* Service Provider Information */}
-          <div className="p-6 border-b border-gray-200">
-            <div className="flex items-center space-x-4">
+      <div className="min-h-screen py-20 pb-8">
+        <div className="max-w-5xl mx-auto shadow-lg rounded-lg overflow-hidden">
+          {/* Header Section */}
+          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6">
+            <div className="flex items-center gap-4">
               <div className="avatar">
-                <div className="w-16 h-16 rounded-full">
+                <div className="w-16 h-16 rounded-full ring ring-offset-2 ring-white">
                   <img
                     src={service.provider.imgURL}
                     alt={service.provider.name}
@@ -25,43 +25,42 @@ const ServiceDetail = () => {
                 </div>
               </div>
               <div>
-                <h2 className="text-lg font-bold">{service.provider.name}</h2>
-                <p>Location: {service.serviceArea}</p>
+                <h2 className="text-xl font-bold">{service.provider.name}</h2>
+                <p className="text-sm">Location: {service.serviceArea}</p>
               </div>
             </div>
           </div>
 
-          {/* Single Service Section */}
-          <div className="p-6">
+          {/* Content Section */}
+          <div className="p-6 space-y-6">
             <figure>
               <img
                 src={service.imgURL}
                 alt={service.serviceName}
-                className="w-full h-64 object-cover rounded-md"
+                className="w-full h-64 object-cover rounded-md shadow-md"
               />
             </figure>
-            <h1 className="text-2xl font-bold mt-4">{service.serviceName}</h1>
-            <p className=" text-sm mt-2">{service.description}</p>
-
-            <div className="flex items-center space-x-3 mt-6">
-              <div className="avatar">
-                <div className="w-12 h-12 rounded-full">
-                  <img
-                    src={service.provider.imgURL}
-                    alt={service.provider.name}
-                  />
-                </div>
-              </div>
-              <span className=" font-medium">
-                Service Provider: {service.provider.name}
-              </span>
+            <div className="space-y-4">
+              <h1 className="text-2xl font-bold text-gray-800">
+                {service.serviceName}
+              </h1>
+              <p className="text-gray-700 leading-relaxed">
+                {service.description}
+              </p>
             </div>
 
-            <div className="flex justify-between items-center mt-6">
-              <span className="font-bold text-lg">Price: ${service.price}</span>
-              <Link to={`/services/booking/${service._id}`}>
-                <Button className="btn btn-primary">Book Now</Button>
-              </Link>
+            {/* Price and Booking Section */}
+            <div className="flex justify-between items-center py-4 border-t border-gray-200">
+              <div>
+                <span className="text-xl font-bold text-blue-600">
+                  Price: TK {service.price}
+                </span>
+              </div>
+              <div>
+                <Link to={`/services/booking/${service._id}`}>
+                  <Button className="btn btn-primary">Book Now</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
