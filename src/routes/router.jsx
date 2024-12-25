@@ -10,6 +10,7 @@ import axios from "axios";
 import BookingPage from "../pages/BookingPage";
 import ManageService from "../pages/ManageService";
 import UpdateService from "../pages/UpdateService";
+import BookedServices from "../pages/BookedServices";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,18 @@ const router = createBrowserRouter([
     loader: ({ params }) =>
       axios.get(
         `${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`
+      ),
+  },
+  {
+    path: "/booked/user/:email",
+    element: (
+      <PrivateRoute>
+        <BookedServices />
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      axios.get(
+        `${import.meta.env.VITE_SERVERURL}/api/booking/booked/user/${params.email}`
       ),
   },
   {
