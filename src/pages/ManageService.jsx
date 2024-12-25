@@ -1,12 +1,58 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Button from "../components/UI/Button";
+import axios from "axios";
+import { toast } from "react-toastify";
+import useAuth from "../hooks/useAuth";
 
 const ManageService = () => {
+  const { user } = useAuth();
   const servicesData = useLoaderData();
   const services = servicesData.data.data;
+  const navigate = useNavigate();
+
+  const handleConfirm = (closeToast, id) => {
+    axios
+      .delete(`${import.meta.env.VITE_SERVERURL}/api/services/delete/${id}`)
+      .then(() => {
+        toast.success(`Service Deleted`);
+        navigate(`/services/created/${user.email}`);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+
+    closeToast();
+  };
+
+  const showConfirmationToast = (id) => {
+    toast(
+      ({ closeToast }) => (
+        <div>
+          <p>Are you sure you want to proceed?</p>
+          <div className="space-x-2">
+            <Button
+              className="btn btn-primary btn-sm"
+              onClick={() => handleConfirm(closeToast, id)}
+            >
+              Yes
+            </Button>
+            <Button className="btn btn-error btn-sm" onClick={closeToast}>
+              No
+            </Button>
+          </div>
+        </div>
+      ),
+      {
+        position: "top-left",
+        autoClose: false,
+        closeOnClick: false,
+        draggable: false,
+      }
+    );
+  };
 
   return (
     <>
@@ -17,7 +63,7 @@ const ManageService = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
               <div
-                key={service.id}
+                key={service._id}
                 className="card bg-base-100 shadow-md border border-gray-200 rounded-lg p-4"
               >
                 <figure className="mb-4">
@@ -39,7 +85,10 @@ const ManageService = () => {
                       <span>Update</span>
                     </Button>
                   </Link>
-                  <Button className="btn btn-outline btn-sm btn-error">
+                  <Button
+                    className="btn btn-outline btn-sm btn-error"
+                    onClick={() => showConfirmationToast(service._id)}
+                  >
                     <FaTrash />
                     <span>Delete</span>
                   </Button>
