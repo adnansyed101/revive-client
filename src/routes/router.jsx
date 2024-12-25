@@ -9,6 +9,7 @@ import ServiceDetail from "../pages/ServiceDetail";
 import axios from "axios";
 import BookingPage from "../pages/BookingPage";
 import ManageService from "../pages/ManageService";
+import UpdateService from "../pages/UpdateService";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,18 @@ const router = createBrowserRouter([
     loader: ({ params }) =>
       axios.get(
         `${import.meta.env.VITE_SERVERURL}/api/services/created/${params.email}`
+      ),
+  },
+  {
+    path: "/services/update/:id",
+    element: (
+      <PrivateRoute>
+        <UpdateService />
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      axios.get(
+        `${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`
       ),
   },
   {
