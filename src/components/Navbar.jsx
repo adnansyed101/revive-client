@@ -18,7 +18,7 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/services"}>Services</NavLink>
+        <NavLink to={"/allServices"}>Services</NavLink>
       </li>
     </>
   );
@@ -29,7 +29,9 @@ const Navbar = () => {
         <NavLink to="/addService">Add Service</NavLink>
       </li>
       <li>
-        <a>Manage Service</a>
+        <NavLink to={`/services/created/${user.email}`}>
+          Manage Services
+        </NavLink>
       </li>
       <li>
         <a>Booked Services</a>
