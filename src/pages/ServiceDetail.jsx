@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Button from "../components/UI/Button";
@@ -25,9 +25,7 @@ const ServiceDetail = () => {
                 </div>
               </div>
               <div>
-                <h2 className="text-lg font-bold text-gray-800">
-                  {service.provider.name}
-                </h2>
+                <h2 className="text-lg font-bold">{service.provider.name}</h2>
                 <p>Location: {service.serviceArea}</p>
               </div>
             </div>
@@ -42,10 +40,8 @@ const ServiceDetail = () => {
                 className="w-full h-64 object-cover rounded-md"
               />
             </figure>
-            <h1 className="text-2xl font-bold text-gray-800 mt-4">
-              {service.serviceName}
-            </h1>
-            <p className="text-gray-700 text-sm mt-2">{service.description}</p>
+            <h1 className="text-2xl font-bold mt-4">{service.serviceName}</h1>
+            <p className=" text-sm mt-2">{service.description}</p>
 
             <div className="flex items-center space-x-3 mt-6">
               <div className="avatar">
@@ -56,16 +52,16 @@ const ServiceDetail = () => {
                   />
                 </div>
               </div>
-              <span className="text-gray-700 font-medium">
+              <span className=" font-medium">
                 Service Provider: {service.provider.name}
               </span>
             </div>
 
             <div className="flex justify-between items-center mt-6">
-              <span className="text-blue-600 font-bold text-lg">
-                Price: ${service.price}
-              </span>
-              <Button className="btn btn-primary">Book Now</Button>
+              <span className="font-bold text-lg">Price: ${service.price}</span>
+              <Link to={`/service/booking/${service._id}`}>
+                <Button className="btn btn-primary">Book Now</Button>
+              </Link>
             </div>
           </div>
         </div>
