@@ -29,12 +29,12 @@ const Navbar = () => {
         <NavLink to="/addService">Add Service</NavLink>
       </li>
       <li>
-        <NavLink to={`/services/created/${user.email}`}>
+        <NavLink to={`/services/created/${user?.email}`}>
           Manage Services
         </NavLink>
       </li>
       <li>
-        <a>Booked Services</a>
+        <NavLink to={`/booked/user/${user?.email}`}>Booked Services</NavLink>
       </li>
       <li>
         <a>Service To Do</a>
@@ -43,7 +43,7 @@ const Navbar = () => {
   );
 
   const logBtns =
-    user && user.email ? (
+    user && user?.email ? (
       <div className="dropdown dropdown-end">
         <div
           tabIndex={0}
@@ -89,10 +89,12 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               {mainMenu}
-              <li>
-                <a>Dashboard</a>
-                <ul className="p-2">{subMenu}</ul>
-              </li>
+              {user && (
+                <li>
+                  <a>Dashboard</a>
+                  <ul className="p-2">{subMenu}</ul>
+                </li>
+              )}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">
