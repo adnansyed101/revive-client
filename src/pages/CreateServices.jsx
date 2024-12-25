@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const CreateServices = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -66,6 +66,7 @@ const CreateServices = () => {
                 name="imgURL"
                 placeholder="Enter the image URL"
                 className="input input-bordered input-primary w-full"
+                required
               />
             </div>
             <div>
@@ -81,6 +82,7 @@ const CreateServices = () => {
                 name="serviceName"
                 placeholder="Enter the service name"
                 className="input input-bordered input-primary w-full"
+                required
               />
             </div>
             <div>
@@ -93,6 +95,7 @@ const CreateServices = () => {
                 name="price"
                 placeholder="Enter the price"
                 className="input input-bordered input-primary w-full"
+                required
               />
             </div>
             <div>
@@ -108,6 +111,7 @@ const CreateServices = () => {
                 name="serviceArea"
                 placeholder="Enter the service area"
                 className="input input-bordered input-primary w-full"
+                required
               />
             </div>
             <div>
@@ -123,6 +127,7 @@ const CreateServices = () => {
                 placeholder="Enter the service description"
                 className="textarea textarea-primary w-full"
                 rows="4"
+                required
               ></textarea>
             </div>
             <Button type="submit" className="btn btn-primary btn-block">
