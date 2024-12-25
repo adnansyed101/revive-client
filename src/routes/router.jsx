@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoutes";
 import AllServices from "../pages/AllServices";
 import ServiceDetail from "../pages/ServiceDetail";
 import axios from "axios";
+import BookingPage from "../pages/BookingPage";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,16 @@ const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <ServiceDetail />
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      axios.get(`${import.meta.env.VITE_SERVERURL}/api/service/${params.id}`),
+  },
+  {
+    path: "/service/booking/:id",
+    element: (
+      <PrivateRoute>
+        <BookingPage />
       </PrivateRoute>
     ),
     loader: ({ params }) =>
