@@ -1,5 +1,5 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Button from "../components/UI/Button";
@@ -7,11 +7,6 @@ import Button from "../components/UI/Button";
 const ManageService = () => {
   const servicesData = useLoaderData();
   const services = servicesData.data.data;
-  const navigate = useNavigate();
-
-  const handleUpdate = (id) => {
-    navigate(`/services/update/${id}`);
-  };
 
   return (
     <>
@@ -38,13 +33,12 @@ const ManageService = () => {
                 <p className=" mb-2">Price: ${service.price}</p>
                 <p className=" mb-4">Area: {service.serviceArea}</p>
                 <div className="flex space-x-4">
-                  <Button
-                    className="btn btn-outline btn-sm btn-primary"
-                    onClick={() => handleUpdate(service.id)}
-                  >
-                    <FaEdit />
-                    <span>Update</span>
-                  </Button>
+                  <Link to={`/services/update/${service._id}`}>
+                    <Button className="btn btn-outline btn-sm btn-primary">
+                      <FaEdit />
+                      <span>Update</span>
+                    </Button>
+                  </Link>
                   <Button className="btn btn-outline btn-sm btn-error">
                     <FaTrash />
                     <span>Delete</span>
