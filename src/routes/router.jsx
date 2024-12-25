@@ -8,6 +8,7 @@ import AllServices from "../pages/AllServices";
 import ServiceDetail from "../pages/ServiceDetail";
 import axios from "axios";
 import BookingPage from "../pages/BookingPage";
+import ManageService from "../pages/ManageService";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     element: <Homepage />,
   },
   {
-    path: "/services",
+    path: "/allServices",
     element: <AllServices />,
   },
   {
@@ -26,7 +27,21 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      axios.get(`${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`),
+      axios.get(
+        `${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`
+      ),
+  },
+  {
+    path: "/services/created/:email",
+    element: (
+      <PrivateRoute>
+        <ManageService />
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      axios.get(
+        `${import.meta.env.VITE_SERVERURL}/api/services/created/${params.email}`
+      ),
   },
   {
     path: "/services/booking/:id",
@@ -36,7 +51,9 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      axios.get(`${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`),
+      axios.get(
+        `${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`
+      ),
   },
   {
     path: "/signin",
