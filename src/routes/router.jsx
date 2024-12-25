@@ -5,6 +5,8 @@ import SignUp from "../pages/SignUp";
 import CreateServices from "../pages/CreateServices";
 import PrivateRoute from "./PrivateRoutes";
 import AllServices from "../pages/AllServices";
+import ServiceDetail from "../pages/ServiceDetail";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,16 @@ const router = createBrowserRouter([
   {
     path: "/services",
     element: <AllServices />,
+  },
+  {
+    path: "/service/:id",
+    element: (
+      <PrivateRoute>
+        <ServiceDetail />
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      axios.get(`${import.meta.env.VITE_SERVERURL}/api/service/${params.id}`),
   },
   {
     path: "/signin",
@@ -27,7 +39,7 @@ const router = createBrowserRouter([
     path: "/addService",
     element: (
       <PrivateRoute>
-        <CreateServices />,
+        <CreateServices />
       </PrivateRoute>
     ),
   },
