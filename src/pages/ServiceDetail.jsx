@@ -59,7 +59,7 @@ const ServiceDetail = () => {
 
             <div className="flex justify-between items-center mt-6">
               <span className="font-bold text-lg">Price: ${service.price}</span>
-              <Link to={`/service/booking/${service._id}`}>
+              <Link to={`/services/booking/${service._id}`}>
                 <Button className="btn btn-primary">Book Now</Button>
               </Link>
             </div>

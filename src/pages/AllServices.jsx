@@ -10,7 +10,7 @@ const AllServices = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_SERVERURL}/api/service/all-services`)
+      .get(`${import.meta.env.VITE_SERVERURL}/api/services/all-services`)
       .then((data) => {
         setServices(data.data.data);
       })
@@ -61,7 +61,7 @@ const AllServices = () => {
                   </span>
                 </div>
                 <div className="card-actions mt-4">
-                  <Link to={`/service/${service._id}`}>
+                  <Link to={`/services/service/${service._id}`}>
                     <Button className="btn btn-primary w-full">
                       View Details
                     </Button>

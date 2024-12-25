@@ -31,7 +31,7 @@ const CreateServices = () => {
 
     axios
       .post(
-        `${import.meta.env.VITE_SERVERURL}/api/service/add-service`,
+        `${import.meta.env.VITE_SERVERURL}/api/services/add-service`,
         newService
       )
       .then((data) => {

@@ -19,24 +19,24 @@ const router = createBrowserRouter([
     element: <AllServices />,
   },
   {
-    path: "/service/:id",
+    path: "/services/service/:id",
     element: (
       <PrivateRoute>
         <ServiceDetail />
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      axios.get(`${import.meta.env.VITE_SERVERURL}/api/service/${params.id}`),
+      axios.get(`${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`),
   },
   {
-    path: "/service/booking/:id",
+    path: "/services/booking/:id",
     element: (
       <PrivateRoute>
         <BookingPage />
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      axios.get(`${import.meta.env.VITE_SERVERURL}/api/service/${params.id}`),
+      axios.get(`${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`),
   },
   {
     path: "/signin",

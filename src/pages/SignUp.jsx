@@ -11,7 +11,8 @@ import Loading from "../components/Loading";
 const SignUp = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [showVerifyPwd, setShowVerifyPwd] = useState(false);
-  const { user, createNewUser, setUser, updateUserProfile, loading } = useAuth();
+  const { user, createNewUser, setUser, updateUserProfile, loading } =
+    useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,6 +57,7 @@ const SignUp = () => {
           .catch((error) => {
             const errorCode = error.code;
             toast.error(errorCode);
+            navigate("/signUp");
           });
       })
       .catch((error) => {
