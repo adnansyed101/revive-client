@@ -23,48 +23,66 @@ const AllServices = () => {
       <div className="flex flex-col items-center min-h-screen mt-20 mb-10">
         <h2 className="text-3xl font-bold mb-6">All Services</h2>
         <div className="w-full max-w-4xl space-y-6">
-          {services.map((service, index) => (
-            <div key={index} className="card bg-base-200 shadow-md rounded-lg">
-              <figure>
+          {services.map((service) => (
+            <div
+              key={service._id}
+              className="card card-side bg-base-100 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
+            >
+              {/* Service Image */}
+              <figure className="w-1/3 relative">
                 <img
                   src={service.imgURL}
                   alt={service.serviceName}
-                  className="w-full h-48 object-cover rounded-t-lg"
+                  className="object-cover w-full h-full rounded-l-lg"
                 />
+                <div className="badge badge-primary absolute top-3 left-3 p-2 text-sm">
+                  {service.serviceArea}
+                </div>
               </figure>
-              <div className="card-body">
-                <h3 className="card-title text-lg font-bold">
+
+              {/* Card Body */}
+              <div className="card-body flex flex-col justify-between">
+                {/* Service Title */}
+                <h2 className="card-title text-lg font-bold">
                   {service.serviceName}
-                </h3>
-                <p className="text-sm">
+                </h2>
+
+                {/* Service Description */}
+                <p className="text-sm mb-2">
                   {service.description.length > 100
                     ? `${service.description.slice(0, 100)}...`
                     : service.description}
                 </p>
-                <div className="flex items-center space-x-3 mt-4">
+                {/* Divider */}
+                <div className="divider my-2"></div>
+
+                {/* Provider and Price Info */}
+                <div className="flex items-center gap-4">
                   <div className="avatar">
-                    <div className="w-10 rounded-full">
+                    <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                       <img
                         src={service.provider.imgURL}
                         alt={service.provider.name}
                       />
                     </div>
                   </div>
-                  <span className=" font-medium">{service.providerName}</span>
+                  <div>
+                    <p className="font-medium text-gray-700">
+                      {service.provider.name}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      <strong>Price:</strong> TK {service.price}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      <strong>Area:</strong> {service.serviceArea}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center mt-4">
-                  <span className="badge badge-outline">
-                    Area: {service.serviceArea}
-                  </span>
-                  <span className="text-blue-600 font-bold">
-                    ${service.price}
-                  </span>
-                </div>
-                <div className="card-actions mt-4">
+
+                {/* Actions */}
+                <div className="card-actions justify-end">
                   <Link to={`/services/service/${service._id}`}>
-                    <Button className="btn btn-primary w-full">
-                      View Details
-                    </Button>
+                    <Button className="btn btn-primary">View Details</Button>
                   </Link>
                 </div>
               </div>
