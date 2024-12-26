@@ -37,7 +37,9 @@ const Navbar = () => {
         <NavLink to={`/booked/user/${user?.email}`}>Booked Services</NavLink>
       </li>
       <li>
-        <a>Service To Do</a>
+        <NavLink to={`/booked/serviceToDo/${user?.email}`}>
+          Service To Do
+        </NavLink>
       </li>
     </>
   );
