@@ -7,12 +7,16 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { motion } from "motion/react";
 import "aos/dist/aos.css";
 import { toast } from "react-toastify";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+import axios from "axios";
 
 const AllServices = () => {
+  const [count, setCount] = useState(0);
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState("");
-  const axiosSecure = useAxiosSecure();
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 7;
+  const numberOfPages = Math.ceil(count / itemsPerPage);
+  const pages = [...Array(numberOfPages).keys()];
 
   useEffect(() => {
     document.title = "R&R | Services";
@@ -20,13 +24,42 @@ const AllServices = () => {
   }, []);
 
   useEffect(() => {
-    axiosSecure
-      .get(`/api/services/all-services?search=${search}`)
+    axios
+      .get(
+        `https://revivie-rewire.vercel.app/api/services/all-services?search=${search}&page=${currentPage}&size=${itemsPerPage}`
+      )
       .then((data) => {
         setServices(data.data.data);
       })
-      .catch((err) => toast.err(err.message));
-  }, [axiosSecure,search]);
+      .catch((err) => toast.error(err.message));
+    window.scrollTo(0, 0);
+  }, [currentPage, search]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://revivie-rewire.vercel.app/api/services/all-services/count/?search=${search}`
+      )
+      .then((data) => {
+        setCount(data.data.data);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+    setCurrentPage(0);
+  }, [search]);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   return (
     <>
@@ -112,6 +145,23 @@ const AllServices = () => {
             </motion.div>
           ))}
         </div>
+      </div>
+      <div className="join flex items-center justify-center mb-4">
+        <button className="join-item btn" onClick={handlePreviousPage}>
+          «
+        </button>
+        {pages.map((page) => (
+          <button
+            key={page}
+            className={`join-item btn ${currentPage === page && "btn-active"}`}
+            onClick={() => setCurrentPage(page)}
+          >
+            {page + 1}
+          </button>
+        ))}
+        <button className="join-item btn" onClick={handleNextPage}>
+          »
+        </button>
       </div>
       <Footer />
     </>
