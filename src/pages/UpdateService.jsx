@@ -1,16 +1,21 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Button from "../components/UI/Button";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import Loading from "../components/Loading";
+import { toast } from "react-toastify";
 
 const UpdateService = () => {
   const serviceData = useLoaderData();
   const service = serviceData.data.data;
-  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
+  const { user, loading, setLoading } = useAuth();
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     const form = e.target;
 
@@ -33,16 +38,19 @@ const UpdateService = () => {
       },
     };
 
-    axios
-      .put(
-        `${import.meta.env.VITE_SERVERURL}/api/services/update/${service._id}`,
-        newService
-      )
-      .then((data) => {
-        console.log(data);
+    axiosSecure
+      .put(`/api/services/update/${service._id}`, newService)
+      .then(() => {
+        setLoading(false);
+        toast.success("Service Updated");
+        navigate(`/services/created/${user?.email}`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -129,7 +137,7 @@ const UpdateService = () => {
               ></textarea>
             </div>
             <Button type="submit" className="btn btn-primary btn-block">
-              Add Service
+              Update Service
             </Button>
           </form>
         </div>

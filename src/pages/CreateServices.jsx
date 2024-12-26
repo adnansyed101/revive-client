@@ -1,16 +1,19 @@
-import axios from "axios";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Button from "../components/UI/Button";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import Loading from "../components/Loading";
 
 const CreateServices = () => {
-  const { user } = useAuth();
+  const { user, loading, setLoading } = useAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     const form = e.target;
 
@@ -33,18 +36,22 @@ const CreateServices = () => {
       },
     };
 
-    axios
+    axiosSecure
       .post(
         `${import.meta.env.VITE_SERVERURL}/api/services/add-service`,
         newService
       )
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        setLoading(false);
         navigate(`/services/created/${user.email}`);
         toast.success("Service Created");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>

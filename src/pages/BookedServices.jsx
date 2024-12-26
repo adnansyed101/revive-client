@@ -19,7 +19,7 @@ const BookedServices = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex items-center justify-center py-8">
+      <div className="min-h-screen flex items-center justify-center pt-20 pb-8">
         <div className="max-w-7xl w-full bg-base-200 shadow-lg rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-6">Booked Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -36,11 +36,12 @@ const BookedServices = () => {
                       className="w-full h-40 object-cover rounded-md"
                     />
                   </figure>
-                  <h3 className="text-lg font-bold text-gray-700 mb-2">
+                  <h3 className="text-lg font-bold mb-2">
                     {booking.serviceName}
                   </h3>
                   <p>Price: ${booking.price}</p>
                   <p>Area: {booking.serviceArea}</p>
+                  <div className="divider">Provided By</div>
                   <div className="flex items-center mt-2">
                     <img
                       src={booking.provider.imgURL}
@@ -54,6 +55,7 @@ const BookedServices = () => {
                       <p>{booking.provider.email}</p>
                     </div>
                   </div>
+                  <div className="divider"></div>
                   <p className="mt-2">
                     Date:{" "}
                     {format(new Date(booking.bookingDetails.serviceDate), "PP")}

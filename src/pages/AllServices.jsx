@@ -44,7 +44,7 @@ const AllServices = () => {
           {services.map((service) => (
             <div
               key={service._id}
-              className="card card-side bg-base-100 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
+              className="card card-side bg-base-200 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
             >
               {/* Service Image */}
               <figure className="w-1/3 relative">
@@ -85,13 +85,11 @@ const AllServices = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="font-medium text-gray-700">
-                      {service.provider.name}
-                    </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="font-medium">{service.provider.name}</p>
+                    <p className="text-sm">
                       <strong>Price:</strong> TK {service.price}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm">
                       <strong>Area:</strong> {service.serviceArea}
                     </p>
                   </div>

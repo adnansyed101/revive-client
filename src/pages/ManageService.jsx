@@ -3,17 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Button from "../components/UI/Button";
-import axios from "axios";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Loading from "../components/Loading";
 
 const ManageService = () => {
-  const { user } = useAuth();
+  const { user, loading, setLoading } = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
-
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -23,11 +22,13 @@ const ManageService = () => {
   }, [axiosSecure, user?.email]);
 
   const handleConfirm = (closeToast, id) => {
-    axios
-      .delete(`${import.meta.env.VITE_SERVERURL}/api/services/delete/${id}`)
+    setLoading(true);
+    axiosSecure
+      .delete(`/api/services/delete/${id}`)
       .then(() => {
+        setLoading(false);
         toast.success(`Service Deleted`);
-        navigate(`/services/created/${user.email}`);
+        navigate(`/services/created/${user?.email}`);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -63,6 +64,10 @@ const ManageService = () => {
     );
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <Navbar />
@@ -74,7 +79,7 @@ const ManageService = () => {
               services.map((service) => (
                 <div
                   key={service._id}
-                  className="card bg-base-100 shadow-md border border-gray-200 rounded-lg p-4"
+                  className="card bg-base-100 shadow-md border rounded-lg p-4"
                 >
                   <figure className="mb-4">
                     <img
@@ -86,8 +91,8 @@ const ManageService = () => {
                   <h3 className="text-lg font-bold  mb-2">
                     {service.serviceName}
                   </h3>
-                  <p className=" mb-2">Price: ${service.price}</p>
-                  <p className=" mb-4">Area: {service.serviceArea}</p>
+                  <p className="mb-2">Price: Tk {service.price}</p>
+                  <p className="mb-4">Area: {service.serviceArea}</p>
                   <div className="flex space-x-4">
                     <Link to={`/services/update/${service._id}`}>
                       <Button className="btn btn-outline btn-sm btn-primary">

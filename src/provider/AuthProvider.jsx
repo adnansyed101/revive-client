@@ -31,13 +31,11 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser?.email) {
         setUser(currentUser);
-        axios
-          .post(
-            `${import.meta.env.VITE_SERVERURL}/jwt`,
-            { email: currentUser?.email },
-            { withCredentials: true }
-          )
-          .then((data) => console.log(data.data));
+        axios.post(
+          `${import.meta.env.VITE_SERVERURL}/jwt`,
+          { email: currentUser?.email },
+          { withCredentials: true }
+        );
       } else {
         setUser(currentUser);
         axios

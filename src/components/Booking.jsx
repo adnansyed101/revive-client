@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../hooks/useAuth";
 import Button from "./UI/Button";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Booking = () => {
   const serviceData = useLoaderData();
@@ -12,6 +12,7 @@ const Booking = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [serviceDate, setServiceDate] = useState(new Date());
+  const axiosSecure = useAxiosSecure()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,9 +44,9 @@ const Booking = () => {
       },
     };
 
-    axios
+    axiosSecure
       .post(
-        `${import.meta.env.VITE_SERVERURL}/api/booking/add-booking`,
+        `/api/booking/add-booking`,
         newBooking
       )
       .then((data) => {

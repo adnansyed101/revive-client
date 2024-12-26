@@ -1,32 +1,33 @@
 import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Select from "react-select";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const ServiceToDo = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [bookedServices, setBookedServices] = useState([]);
 
   useEffect(() => {
-    axiosSecure.get(`/api/booking/booked/user/${user?.email}`).then((data) => {
-      setBookedServices(data.data.data);
-    });
+    axiosSecure
+      .get(`/api/booking/booked/serviceToDo/${user?.email}`)
+      .then((data) => {
+        setBookedServices(data.data.data);
+      });
   }, [axiosSecure, user?.email]);
 
   const handleOnChange = (e, id) => {
     axiosSecure
       .patch(`/api/booking/booked/update/${id}`, { status: e.value })
       .then(() => {
-        navigate(`/booked/serviceToDo/${user?.email}`);
+        toast.success("Status changed");
       })
       .catch((err) => {
-        console.log(err);
+        toast.err(err.message);
       });
   };
 
@@ -39,7 +40,7 @@ const ServiceToDo = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex items-center justify-center py-8">
+      <div className="min-h-screen flex items-center justify-center pt-20 pb-8">
         <div className="max-w-5xl w-full bg-base-200 shadow-lg rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-6">Services To Do</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
@@ -61,6 +62,7 @@ const ServiceToDo = () => {
                   </h3>
                   <p>Price: ${service.price}</p>
                   <p>Area: {service.serviceArea}</p>
+                  <div className="divider">Booked By</div>
                   <div className="flex items-center mt-2">
                     <img
                       src={service.bookingDetails.imgURL}
@@ -74,6 +76,7 @@ const ServiceToDo = () => {
                       <p>{service.bookingDetails.userEmail}</p>
                     </div>
                   </div>
+                  <div className="divider"></div>
                   <p className="mt-2">
                     Date:{" "}
                     {format(new Date(service.bookingDetails.serviceDate), "PP")}
@@ -96,7 +99,7 @@ const ServiceToDo = () => {
                 </div>
               ))
             ) : (
-              <h1>No Services Created</h1>
+              <h1>No Services Booked by anyone</h1>
             )}
           </div>
         </div>
