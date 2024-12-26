@@ -33,6 +33,7 @@ const Booking = () => {
       },
       bookingDetails: {
         userName: user.displayName,
+        imgURL: user.photoURL,
         userEmail: user.email,
         serviceID: service._id,
         serviceDate: serviceDate,
@@ -49,7 +50,7 @@ const Booking = () => {
       )
       .then((data) => {
         console.log(data);
-        navigate(`/booked/${user.email}`);
+        navigate(`/booked/user/${user.email}`);
       })
       .catch((err) => console.log(err));
   };
