@@ -11,7 +11,7 @@ const BookedServices = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    axiosSecure.get(`/api/booking/booked/user/${user.email}`).then((data) => {
+    axiosSecure.get(`/api/booking/booked/user/${user?.email}`).then((data) => {
       setBookings(data.data.data);
     });
   }, [axiosSecure, user?.email]);
