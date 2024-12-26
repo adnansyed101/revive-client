@@ -1,8 +1,19 @@
-# React + Vite
+# Revive & Rewire
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## [Revive & Rewire](https://reviverewire.web.app/)
 
-Currently, two official plugins are available:
+In this website a user can perform CRUD operations. The api is protected using JWT so that only users who are logged in are able to perform CRUD Operations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Features of the Website:
+
+- Create, Read, Update, Delete Services.
+- Book Services.
+- Get Services create by individual users.
+- Get bookings by individual users.
+- Show Toast messages in any loading State
+- Show pagination.
+- Search in All Services
+
+# Assignment Category -- 02.
+
+![Home Page Image](/public/Homepage.PNG)
