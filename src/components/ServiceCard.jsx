@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import Button from "./UI/Button";
 import { Link } from "react-router-dom";
+import "aos/dist/aos.css";
 
 const ServiceCard = ({ service }) => {
   const { imgURL, serviceName, description, provider, price, serviceArea } =
     service;
   return (
-    <div className="card card-bordered shadow-lg bg-base-100 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className="card card-bordered shadow-lg bg-base-100 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" data-aos='flip-left'>
       <figure className="relative">
         <img
           src={imgURL}

@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loading from "../components/Loading";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const UpdateService = () => {
   const serviceData = useLoaderData();
@@ -13,6 +14,11 @@ const UpdateService = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user, loading, setLoading } = useAuth();
+
+  useEffect(() => {
+    document.title = "R&R | Update Service";
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = (e) => {
     setLoading(true);

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import Button from "./UI/Button";
 import { FaScrewdriverWrench } from "react-icons/fa6";
+import List from "./UI/List";
 
 const Navbar = () => {
   const { user, logOut, theme, toggleTheme } = useAuth();
@@ -14,33 +15,33 @@ const Navbar = () => {
 
   const mainMenu = (
     <>
-      <li>
+      <List>
         <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
+      </List>
+      <List>
         <NavLink to={"/allServices"}>Services</NavLink>
-      </li>
+      </List>
     </>
   );
 
   const subMenu = (
     <>
-      <li>
+      <List>
         <NavLink to="/addService">Add Service</NavLink>
-      </li>
-      <li>
+      </List>
+      <List>
         <NavLink to={`/services/created/${user?.email}`}>
           Manage Services
         </NavLink>
-      </li>
-      <li>
+      </List>
+      <List>
         <NavLink to={`/booked/user/${user?.email}`}>Booked Services</NavLink>
-      </li>
-      <li>
+      </List>
+      <List>
         <NavLink to={`/booked/serviceToDo/${user?.email}`}>
           Service To Do
         </NavLink>
-      </li>
+      </List>
     </>
   );
 
@@ -79,8 +80,8 @@ const Navbar = () => {
     );
 
   return (
-    <header className="w-full fixed top-0 z-50 bg-base-300">
-      <div className="navbar py-0 container mx-auto">
+    <header className="w-full fixed top-2 z-50 ">
+      <div className="navbar py-0 container mx-auto bg-base-300 rounded-lg">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -99,10 +100,10 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
+          <Link to="/" className="btn btn-ghost text-xl">
             <FaScrewdriverWrench />
             Revive & Rewire
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-2">

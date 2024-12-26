@@ -15,7 +15,7 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "R&R | Login";
+    document.title = "R&R | Sign In";
     window.scrollTo(0, 0);
   }, []);
 

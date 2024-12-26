@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import app from "../config/firebase";
 import { toast } from "react-toastify";
+import AOS from "aos";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -26,6 +27,11 @@ const AuthProvider = ({ children }) => {
   const toggleTheme = () => {
     setTheme(theme === "winter" ? "dim" : "winter");
   };
+
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {

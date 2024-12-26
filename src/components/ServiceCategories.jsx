@@ -1,6 +1,7 @@
 import { MdOutlinePhoneIphone, MdLaptopMac, MdHome } from "react-icons/md";
 import { GiConsoleController } from "react-icons/gi";
 import { BsSmartwatch } from "react-icons/bs";
+import "aos/dist/aos.css";
 
 // Data for service categories
 const serviceCategories = [
@@ -38,7 +39,7 @@ const serviceCategories = [
 
 const ServiceCategories = () => {
   return (
-    <div className="py-12">
+    <div className="py-12" data-aos="fade-up" data-aos-delay="400">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">
           We Fix All Types of Electronics!

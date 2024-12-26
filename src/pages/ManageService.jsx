@@ -8,12 +8,18 @@ import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loading from "../components/Loading";
+import { motion } from "motion/react";
 
 const ManageService = () => {
   const { user, loading, setLoading } = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    document.title = "R&R | Manager";
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     axiosSecure.get(`/api/services/created/${user?.email}`).then((data) => {
@@ -71,13 +77,15 @@ const ManageService = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex items-center justify-center py-8">
+      <div className="min-h-screen flex items-center justify-center pt-20 pb-8">
         <div className="max-w-5xl w-full bg-base-200 shadow-lg rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-6">Manage Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.length > 0 ? (
               services.map((service) => (
-                <div
+                <motion.div
+                  initial={{ y: 0 }}
+                  whileHover={{ y: -20 }}
                   key={service._id}
                   className="card bg-base-100 shadow-md border rounded-lg p-4"
                 >
@@ -108,7 +116,7 @@ const ManageService = () => {
                       <span>Delete</span>
                     </Button>
                   </div>
-                </div>
+                </motion.div>
               ))
             ) : (
               <h1>No Services Created</h1>

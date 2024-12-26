@@ -6,11 +6,17 @@ import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { motion } from "motion/react";
 
 const ServiceToDo = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [bookedServices, setBookedServices] = useState([]);
+
+  useEffect(() => {
+    document.title = "R&R | To Do";
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     axiosSecure
@@ -46,7 +52,9 @@ const ServiceToDo = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
             {bookedServices.length > 0 ? (
               bookedServices.map((service) => (
-                <div
+                <motion.div
+                  initial={{ y: 0 }}
+                  whileHover={{ y: -20 }}
                   key={service._id}
                   className="card bg-base-100 shadow-md border border-gray-200 rounded-lg p-4 m-4"
                 >
@@ -96,7 +104,7 @@ const ServiceToDo = () => {
                       onChange={(e) => handleOnChange(e, service._id)}
                     />
                   </div>
-                </div>
+                </motion.div>
               ))
             ) : (
               <h1>No Services Booked by anyone</h1>

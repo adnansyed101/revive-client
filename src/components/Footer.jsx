@@ -24,7 +24,7 @@ const Footer = () => {
           {/* Social Media Links */}
           <div className="flex space-x-4">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/adnansyed101/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:text-blue-400"
@@ -33,7 +33,7 @@ const Footer = () => {
               <FaFacebook size={24} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/adnansyed101/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-300 hover:text-blue-200"

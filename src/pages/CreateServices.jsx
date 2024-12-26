@@ -6,11 +6,17 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loading from "../components/Loading";
+import { useEffect } from "react";
 
 const CreateServices = () => {
   const { user, loading, setLoading } = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
+
+   useEffect(() => {
+      document.title = "R&R | Create Service";
+      window.scrollTo(0, 0);
+    }, []);
 
   const handleSubmit = (e) => {
     setLoading(true);

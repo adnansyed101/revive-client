@@ -2,10 +2,16 @@ import { Link, useLoaderData } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Button from "../components/UI/Button";
+import { useEffect } from "react";
 
 const ServiceDetail = () => {
   const serviceData = useLoaderData();
   const service = serviceData.data.data;
+
+   useEffect(() => {
+      document.title = "R&R | Detials";
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <>

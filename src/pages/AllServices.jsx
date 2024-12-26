@@ -5,10 +5,17 @@ import Button from "../components/UI/Button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { motion } from "motion/react";
+import "aos/dist/aos.css";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    document.title = "R&R | Services";
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     axios
@@ -42,9 +49,12 @@ const AllServices = () => {
         <h2 className="text-3xl font-bold mb-6">All Services</h2>
         <div className="w-full max-w-4xl space-y-6">
           {services.map((service) => (
-            <div
+            <motion.div
+              initial={{ y: 0 }}
+              whileHover={{ y: -10 }}
               key={service._id}
-              className="card card-side bg-base-200 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
+              className="card card-side bg-base-200 shadow-lg"
+              data-aos='fade-down'
             >
               {/* Service Image */}
               <figure className="w-1/3 relative">
@@ -102,7 +112,7 @@ const AllServices = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

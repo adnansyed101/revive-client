@@ -11,6 +11,11 @@ const BookedServices = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
+    document.title = "R&R | Booked";
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     axiosSecure.get(`/api/booking/booked/user/${user?.email}`).then((data) => {
       setBookings(data.data.data);
     });

@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import PopularServices from "../components/PopularServices";
 import ServiceCategories from "../components/ServiceCategories";
+import RepairProcess from "../components/RepairProcess";
+import WebsiteInsights from "../components/WebsiteInsights";
 
 const Homepage = () => {
   useEffect(() => {
@@ -17,6 +19,8 @@ const Homepage = () => {
       <Banner />
       <ServiceCategories />
       <PopularServices />
+      <RepairProcess />
+      <WebsiteInsights />
       <Footer />
     </>
   );
