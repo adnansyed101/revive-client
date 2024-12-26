@@ -56,8 +56,7 @@ const BookedServices = () => {
                     {booking.bookingDetails.serviceInstruction}
                   </p>
                   <div className="flex justify-between items-center mt-2">
-                    <p className="font-semibold">Status: </p>
-                    
+                    <p className="font-semibold">Status: </p> <span className="badge badge-primary badge-outline">{booking.bookingDetails.serviceStatus}</span>
                   </div>
                 </div>
               ))
