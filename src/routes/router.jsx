@@ -42,10 +42,6 @@ const router = createBrowserRouter([
         <ManageService />
       </PrivateRoute>
     ),
-    loader: ({ params }) =>
-      axios.get(
-        `${import.meta.env.VITE_SERVERURL}/api/services/created/${params.email}`
-      ),
   },
   {
     path: "/services/update/:id",
@@ -78,12 +74,6 @@ const router = createBrowserRouter([
         <BookedServices />
       </PrivateRoute>
     ),
-    loader: ({ params }) =>
-      axios.get(
-        `${import.meta.env.VITE_SERVERURL}/api/booking/booked/user/${
-          params.email
-        }`
-      ),
   },
   {
     path: "/booked/serviceToDo/:email",
@@ -92,12 +82,6 @@ const router = createBrowserRouter([
         <ServiceToDo />
       </PrivateRoute>
     ),
-    loader: ({ params }) =>
-      axios.get(
-        `${import.meta.env.VITE_SERVERURL}/api/booking/booked/serviceToDo/${
-          params.email
-        }`
-      ),
   },
   {
     path: "/signin",
