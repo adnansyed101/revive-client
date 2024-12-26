@@ -1,0 +1,32 @@
+import axios from "axios";
+import useAuth from "./useAuth";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+const axiosSecure = axios.create({
+  baseURL: import.meta.env.VITE_SERVERURL,
+  withCredentials: true,
+});
+
+const useAxiosSecure = () => {
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axiosSecure.interceptors.response.use(
+      (res) => res,
+      async (error) => {
+        console.log("error from axios ", error.response);
+
+        if (error.response.status === 401 || error.response.status) {
+          logOut();
+          navigate("/signin");
+        }
+      }
+    );
+  }, [logOut, navigate]);
+
+  return axiosSecure;
+};
+
+export default useAxiosSecure;
