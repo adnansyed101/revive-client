@@ -44,7 +44,7 @@ const CreateServices = () => {
 
     axiosSecure
       .post(
-        `${import.meta.env.VITE_SERVERURL}/api/services/add-service`,
+        `/api/services/add-service`,
         newService
       )
       .then(() => {

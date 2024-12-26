@@ -22,9 +22,15 @@ const ManageService = () => {
   }, []);
 
   useEffect(() => {
-    axiosSecure.get(`/api/services/created/${user?.email}`).then((data) => {
-      setServices(data.data.data);
-    });
+    axiosSecure
+      .get(`/api/services/created/${user?.email}`)
+      .then((data) => {
+        setServices(data.data.data);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [axiosSecure, user?.email]);
 
   const handleConfirm = (closeToast, id) => {

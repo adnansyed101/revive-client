@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../hooks/useAuth";
 import Button from "./UI/Button";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const Booking = () => {
   const serviceData = useLoaderData();
@@ -12,7 +13,7 @@ const Booking = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [serviceDate, setServiceDate] = useState(new Date());
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,15 +46,11 @@ const Booking = () => {
     };
 
     axiosSecure
-      .post(
-        `/api/booking/add-booking`,
-        newBooking
-      )
-      .then((data) => {
-        console.log(data);
+      .post(`/api/booking/add-booking`, newBooking)
+      .then(() => {
         navigate(`/booked/user/${user.email}`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
 
   return (

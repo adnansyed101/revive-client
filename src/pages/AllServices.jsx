@@ -3,14 +3,16 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Button from "../components/UI/Button";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { motion } from "motion/react";
 import "aos/dist/aos.css";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState("");
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     document.title = "R&R | Services";
@@ -18,17 +20,13 @@ const AllServices = () => {
   }, []);
 
   useEffect(() => {
-    axios
-      .get(
-        `${
-          import.meta.env.VITE_SERVERURL
-        }/api/services/all-services?search=${search}`
-      )
+    axiosSecure
+      .get(`/api/services/all-services?search=${search}`)
       .then((data) => {
         setServices(data.data.data);
       })
-      .catch((err) => console.log(err));
-  }, [search]);
+      .catch((err) => toast.err(err.message));
+  }, [axiosSecure,search]);
 
   return (
     <>

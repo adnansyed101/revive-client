@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     ),
     loader: ({ params }) =>
       axios.get(
-        `${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`
+        `https://revivie-rewire.vercel.app/api/services/service/${params.id}`
       ),
   },
   {
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
     ),
     loader: ({ params }) =>
       axios.get(
-        `${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`
+        `https://revivie-rewire.vercel.app/api/services/service/${params.id}`
       ),
   },
   {
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
     ),
     loader: ({ params }) =>
       axios.get(
-        `${import.meta.env.VITE_SERVERURL}/api/services/service/${params.id}`
+        `https://revivie-rewire.vercel.app/api/services/service/${params.id}`
       ),
   },
   {

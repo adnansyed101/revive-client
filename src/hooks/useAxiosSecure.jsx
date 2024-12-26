@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: import.meta.env.VITE_SERVERURL,
+  baseURL: "https://revivie-rewire.vercel.app",
   withCredentials: true,
 });
 
 const useAxiosSecure = () => {
-  const { logOut } = useAuth();
+  const { logOut, setLoading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const useAxiosSecure = () => {
 
         if (error.response.status === 401 || error.response.status) {
           logOut();
+          setLoading(false);
           navigate("/signin");
         }
       }

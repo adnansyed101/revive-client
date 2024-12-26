@@ -38,17 +38,15 @@ const AuthProvider = ({ children }) => {
       if (currentUser?.email) {
         setUser(currentUser);
         axios.post(
-          `${import.meta.env.VITE_SERVERURL}/jwt`,
+          `https://revivie-rewire.vercel.app/jwt`,
           { email: currentUser?.email },
           { withCredentials: true }
         );
       } else {
         setUser(currentUser);
-        axios
-          .get(`${import.meta.env.VITE_SERVERURL}/jwt/logout`, {
-            withCredentials: true,
-          })
-          .then((data) => console.log(data.data));
+        axios.get(`https://revivie-rewire.vercel.app/jwt/logout`, {
+          withCredentials: true,
+        });
       }
       setLoading(false);
     });
