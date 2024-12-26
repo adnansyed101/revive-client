@@ -50,6 +50,8 @@ const SignIn = () => {
       .catch((err) => {
         const errorCode = err.code;
         toast.error(errorCode);
+        setLoading(false);
+        navigate("/signin");
       });
   };
 
