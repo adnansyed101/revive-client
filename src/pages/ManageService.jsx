@@ -1,17 +1,26 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Button from "../components/UI/Button";
 import axios from "axios";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageService = () => {
   const { user } = useAuth();
-  const servicesData = useLoaderData();
-  const services = servicesData.data.data;
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
+
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    axiosSecure.get(`/api/services/created/${user?.email}`).then((data) => {
+      setServices(data.data.data);
+    });
+  }, [axiosSecure, user?.email]);
 
   const handleConfirm = (closeToast, id) => {
     axios

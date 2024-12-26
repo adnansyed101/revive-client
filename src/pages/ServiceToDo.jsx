@@ -1,28 +1,29 @@
 import { format } from "date-fns";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import axios from "axios";
 import Select from "react-select";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
 
 const ServiceToDo = () => {
   const { user } = useAuth();
-  const serviceData = useLoaderData();
-  const bookedService = serviceData.data.data;
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
+  const [bookedServices, setBookedServices] = useState([]);
+
+  useEffect(() => {
+    axiosSecure.get(`/api/booking/booked/user/${user?.email}`).then((data) => {
+      setBookedServices(data.data.data);
+    });
+  }, [axiosSecure, user?.email]);
 
   const handleOnChange = (e, id) => {
-    console.log(e.value);
-
-    axios
-      .patch(
-        `${import.meta.env.VITE_SERVERURL}/api/booking/booked/update/${id}`,
-        { status: e.value }
-      )
-      .then((data) => {
-        console.log(data);
-        navigate(`/booked/serviceToDo/${user.email}`);
+    axiosSecure
+      .patch(`/api/booking/booked/update/${id}`, { status: e.value })
+      .then(() => {
+        navigate(`/booked/serviceToDo/${user?.email}`);
       })
       .catch((err) => {
         console.log(err);
@@ -42,8 +43,8 @@ const ServiceToDo = () => {
         <div className="max-w-5xl w-full bg-base-200 shadow-lg rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-6">Services To Do</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-            {bookedService.length > 0 ? (
-              bookedService.map((service) => (
+            {bookedServices.length > 0 ? (
+              bookedServices.map((service) => (
                 <div
                   key={service._id}
                   className="card bg-base-100 shadow-md border border-gray-200 rounded-lg p-4 m-4"

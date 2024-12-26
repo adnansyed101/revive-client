@@ -1,11 +1,20 @@
-import { useLoaderData } from "react-router-dom";
 import { format } from "date-fns";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAuth from "../hooks/useAuth";
 
 const BookedServices = () => {
-  const bookingData = useLoaderData();
-  const bookings = bookingData.data.data;
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    axiosSecure.get(`/api/booking/booked/user/${user.email}`).then((data) => {
+      setBookings(data.data.data);
+    });
+  }, [axiosSecure, user?.email]);
 
   return (
     <>
@@ -56,7 +65,10 @@ const BookedServices = () => {
                     {booking.bookingDetails.serviceInstruction}
                   </p>
                   <div className="flex justify-between items-center mt-2">
-                    <p className="font-semibold">Status: </p> <span className="badge badge-primary badge-outline">{booking.bookingDetails.serviceStatus}</span>
+                    <p className="font-semibold">Status: </p>{" "}
+                    <span className="badge badge-primary badge-outline">
+                      {booking.bookingDetails.serviceStatus}
+                    </span>
                   </div>
                 </div>
               ))
