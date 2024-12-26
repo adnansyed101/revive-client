@@ -12,6 +12,7 @@ import ManageService from "../pages/ManageService";
 import UpdateService from "../pages/UpdateService";
 import BookedServices from "../pages/BookedServices";
 import ServiceToDo from "../pages/ServiceToDo";
+import Error from "../pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
         <CreateServices />
       </PrivateRoute>
     ),
+  },
+  {
+    path: "*",
+    element: <Error />,
   },
 ]);
 
