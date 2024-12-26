@@ -4,23 +4,41 @@ import Navbar from "../components/Navbar";
 import Button from "../components/UI/Button";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_SERVERURL}/api/services/all-services`)
+      .get(
+        `${
+          import.meta.env.VITE_SERVERURL
+        }/api/services/all-services?search=${search}`
+      )
       .then((data) => {
         setServices(data.data.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [search]);
 
   return (
     <>
       <Navbar />
       <div className="flex flex-col items-center min-h-screen mt-20 mb-10">
+        <div className="flex flex-col md:flex-row justify-center container mx-auto mb-2">
+          <label className="input input-bordered flex items-center gap-2">
+            <input
+              type="text"
+              className="grow"
+              value={search}
+              placeholder="Search"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <FaMagnifyingGlass />
+          </label>
+        </div>
         <h2 className="text-3xl font-bold mb-6">All Services</h2>
         <div className="w-full max-w-4xl space-y-6">
           {services.map((service) => (
