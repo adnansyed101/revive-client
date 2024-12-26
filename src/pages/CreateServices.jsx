@@ -62,7 +62,7 @@ const CreateServices = () => {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center min-h-[calc(100vh-50px)] mt-20 mb-10">
+      <div className="flex items-center justify-center min-h-[calc(100vh-50px)] mt-20 mb-10 px-4 md:px-0">
         <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-base-200">
           <h2 className="text-2xl font-bold text-center">Add a New Service</h2>
           <form className="space-y-4" onSubmit={handleSubmit}>

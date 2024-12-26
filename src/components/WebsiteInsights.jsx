@@ -19,12 +19,6 @@ const WebsiteInsights = () => {
       description:
         "We’re proud to have delivered quality services to thousands.",
     },
-    {
-      id: 4,
-      value: "99.9%",
-      label: "Uptime Guarantee",
-      description: "Our website stays live and reliable all year round.",
-    },
   ];
 
   return (
@@ -35,12 +29,12 @@ const WebsiteInsights = () => {
           Heres a snapshot of how our platform is growing and thriving every
           day.
         </p>
-        <div className="stats shadow">
+        <div className="stats stats-vertical lg:stats-horizontal shadow mx-2">
           {stats.map((stat) => (
             <div key={stat.id} className="stat">
               <div className="stat-title">{stat.label}</div>
               <div className="stat-value">{stat.value}</div>
-              <div className="stat-desc">{stat.description}</div>
+              <div className="stat-desc text-wrap">{stat.description}</div>
             </div>
           ))}
         </div>

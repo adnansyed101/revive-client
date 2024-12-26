@@ -66,7 +66,7 @@ const SignIn = () => {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center min-h-[calc(100vh-50px)] py-20 bg-gradient-to-r from-primary to-accent">
+      <div className="flex items-center justify-center min-h-[calc(100vh-50px)] py-20 px-4 md:px-0 bg-gradient-to-r from-primary to-accent">
         <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-base-300">
           <h2 className="text-2xl font-bold text-center">
             Sign in to Your Account

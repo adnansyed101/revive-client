@@ -65,7 +65,7 @@ const Navbar = () => {
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
-          <li className="text-center">{user?.displayName}</li>
+          <li className="text-center mb-2">{user?.displayName}</li>
           <li>
             <Button onClick={logOut} className="btn btn-warning btn-sm">
               Logout
@@ -75,13 +75,13 @@ const Navbar = () => {
       </div>
     ) : (
       <Link to="/signin">
-        <Button className="btn btn-xs md:btn-md btn-primary">Sign In</Button>
+        <Button className="btn btn-sm md:btn-md btn-primary">Sign In</Button>
       </Link>
     );
 
   return (
-    <header className="w-full fixed top-2 z-50 ">
-      <div className="navbar py-0 container mx-auto bg-base-300 rounded-lg">
+    <header className="fixed top-2 z-50 w-full">
+      <div className="navbar justify-between py-0 w-11/12 mx-auto bg-base-300 rounded-lg">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -100,7 +100,7 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl">
+          <Link to="/" className="btn btn-ghost md:text-xl">
             <FaScrewdriverWrench />
             Revive & Rewire
           </Link>

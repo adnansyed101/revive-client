@@ -16,7 +16,7 @@ const ServiceDetail = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen py-20 pb-8">
+      <div className="min-h-screen pt-20 pb-8 px-4">
         <div className="max-w-5xl mx-auto shadow-lg rounded-lg overflow-hidden">
           {/* Header Section */}
           <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6">
@@ -47,10 +47,10 @@ const ServiceDetail = () => {
               />
             </figure>
             <div className="space-y-4">
-              <h1 className="text-2xl font-bold text-gray-800">
+              <h1 className="text-2xl font-bold">
                 {service.serviceName}
               </h1>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="leading-relaxed">
                 {service.description}
               </p>
             </div>

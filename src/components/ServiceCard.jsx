@@ -7,7 +7,10 @@ const ServiceCard = ({ service }) => {
   const { imgURL, serviceName, description, provider, price, serviceArea } =
     service;
   return (
-    <div className="card card-bordered shadow-lg bg-base-100 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" data-aos='flip-left'>
+    <div
+      className="card card-bordered shadow-lg bg-base-100 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+      data-aos="flip-left"
+    >
       <figure className="relative">
         <img
           src={imgURL}
@@ -27,7 +30,10 @@ const ServiceCard = ({ service }) => {
             alt={provider.name}
             className="w-12 h-12 rounded-full border-2 border-primary mr-3"
           />
-          <span className=" font-medium">{provider.name}</span>
+          <div>
+            <p className="font-medium">{provider.name}</p>
+            <p>{provider.email}</p>
+          </div>
         </div>
         <div className="flex justify-between items-center mt-6">
           <span className="text-lg font-bold text-primary">TK {price}</span>

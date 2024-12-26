@@ -46,17 +46,17 @@ const ServiceToDo = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex items-center justify-center pt-20 pb-8">
-        <div className="max-w-5xl w-full bg-base-200 shadow-lg rounded-lg p-6">
+      <div className="min-h-screen flex items-center justify-center pt-20 pb-8 px-4">
+        <div className="max-w-5xl w-full bg-base-200 shadow-lg rounded-lg p-4">
           <h2 className="text-2xl font-bold mb-6">Services To Do</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">
             {bookedServices.length > 0 ? (
               bookedServices.map((service) => (
                 <motion.div
                   initial={{ y: 0 }}
                   whileHover={{ y: -20 }}
                   key={service._id}
-                  className="card bg-base-100 shadow-md border border-gray-200 rounded-lg p-4 m-4"
+                  className="card bg-base-100 shadow-md border border-gray-200 rounded-lg p-4"
                 >
                   <figure className="mb-4">
                     <img
@@ -65,7 +65,7 @@ const ServiceToDo = () => {
                       className="w-full h-40 object-cover rounded-md"
                     />
                   </figure>
-                  <h3 className="text-lg font-bold text-gray-700 mb-2">
+                  <h3 className="text-lg font-bold  mb-2">
                     {service.serviceName}
                   </h3>
                   <p>Price: ${service.price}</p>

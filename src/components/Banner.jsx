@@ -5,7 +5,7 @@ import Button from "./UI/Button";
 const Banner = () => {
   return (
     <div
-      className="hero min-h-[calc(100vh-50px)]"
+      className="hero min-h-screen md:min-h-[calc(100vh-50px)]"
       style={{
         backgroundImage: `url(${phoneRepair})`,
       }}

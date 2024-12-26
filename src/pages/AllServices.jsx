@@ -34,30 +34,29 @@ const AllServices = () => {
     <>
       <Navbar />
       <div className="flex flex-col items-center min-h-screen mt-20 mb-10">
-        <div className="flex flex-col md:flex-row justify-center container mx-auto mb-2">
-          <label className="input input-bordered flex items-center gap-2">
-            <input
-              type="text"
-              className="grow"
-              value={search}
-              placeholder="Search"
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <FaMagnifyingGlass />
-          </label>
-        </div>
+        <label className="input input-bordered flex items-center gap-2">
+          <input
+            type="text"
+            className="grow"
+            value={search}
+            placeholder="Search"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <FaMagnifyingGlass />
+        </label>
+
         <h2 className="text-3xl font-bold mb-6">All Services</h2>
-        <div className="w-full max-w-4xl space-y-6">
+        <div className="w-full max-w-4xl space-y-6 px-2">
           {services.map((service) => (
             <motion.div
               initial={{ y: 0 }}
               whileHover={{ y: -10 }}
               key={service._id}
-              className="card card-side bg-base-200 shadow-lg"
-              data-aos='fade-down'
+              className="card md:card-side bg-base-200 shadow-lg"
+              data-aos="fade-down"
             >
               {/* Service Image */}
-              <figure className="w-1/3 relative">
+              <figure className="w-full md:w-1/3 relative">
                 <img
                   src={service.imgURL}
                   alt={service.serviceName}

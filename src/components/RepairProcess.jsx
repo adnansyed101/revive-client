@@ -70,7 +70,7 @@ const RepairProcess = () => {
   ];
 
   return (
-    <section className="py-12">
+    <section className="py-12 px-8">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold  mb-6">Our Repair Process</h2>
         <p className="max-w-2xl mx-auto mb-8">

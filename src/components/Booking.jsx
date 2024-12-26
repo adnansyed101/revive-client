@@ -57,8 +57,8 @@ const Booking = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center bg-base-200 justify-center pb-8 pt-20">
-      <div className="max-w-3xl w-full bg-base-100 shadow-lg rounded-lg p-6">
+    <div className="min-h-screen flex items-center bg-base-200 justify-center pb-8 pt-20 px-2">
+      <div className="max-w-3xl w-full bg-base-100 shadow-lg rounded-lg py-6 px-4 md:px-6">
         <h2 className="text-2xl font-bold  mb-6">Book Your Service</h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-4">
