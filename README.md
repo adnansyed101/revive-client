@@ -1,6 +1,6 @@
 # Revive & Rewire
 
-## [Revive & Rewire](https://reviverewire.web.app/)
+## [Live Link](https://reviverewire.web.app/)
 
 A repairing service website. Bring your technologies here and we will revive it. A user can create service. Other users can book those services.
 
