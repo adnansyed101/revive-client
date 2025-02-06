@@ -2,7 +2,7 @@
 
 ## [Revive & Rewire](https://reviverewire.web.app/)
 
-A repairing servive website. Bring your technologies here and we will revive it. A user can create service. Other users can book those services.
+A repairing service website. Bring your technologies here and we will revive it. A user can create service. Other users can book those services.
 
 ### Technologies Used:
 ---
