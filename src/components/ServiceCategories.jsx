@@ -54,7 +54,6 @@ const ServiceCategories = () => {
                 <div className="text-5xl mb-4">{category.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{category.name}</h3>
                 <p className="text-sm">{category.description}</p>
-                <button className="btn btn-primary mt-4">Learn More</button>
               </div>
             </div>
           ))}
