@@ -13,6 +13,7 @@ import UpdateService from "../pages/UpdateService";
 import BookedServices from "../pages/BookedServices";
 import ServiceToDo from "../pages/ServiceToDo";
 import Error from "../pages/Error";
+import About from "../pages/About";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/allServices",
     element: <AllServices />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
   {
     path: "/services/service/:id",
