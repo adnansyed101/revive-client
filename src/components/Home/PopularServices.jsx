@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ServiceCard from "../ServiceCard";
+import ServiceCard from "../Card/ServiceCard";
 import Button from "../UI/Button";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
