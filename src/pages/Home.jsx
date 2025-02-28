@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import Banner from "../components/Banner";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import PopularServices from "../components/PopularServices";
 import ServiceCategories from "../components/ServiceCategories";
 import RepairProcess from "../components/RepairProcess";
@@ -15,13 +13,11 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
       <Banner />
       <ServiceCategories />
       <PopularServices />
       <RepairProcess />
       <WebsiteInsights />
-      <Footer />
     </>
   );
 };
