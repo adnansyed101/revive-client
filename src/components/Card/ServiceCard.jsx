@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 
