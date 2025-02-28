@@ -1,10 +1,10 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/shared/Navbar";
+import Footer from "../components/shared/Footer";
 import Button from "../components/UI/Button";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import Loading from "../components/Loading";
+import Loading from "../components/shared/Loading";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 

@@ -1,13 +1,13 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/shared/Navbar";
+import Footer from "../components/shared/Footer";
 import Button from "../components/UI/Button";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import Loading from "../components/Loading";
+import Loading from "../components/shared/Loading";
 import { motion } from "motion/react";
 
 const ManageService = () => {
@@ -26,7 +26,6 @@ const ManageService = () => {
       .get(`/api/services/created/${user?.email}`)
       .then((data) => {
         setServices(data.data.data);
-        
       })
       .catch((err) => {
         console.log(err);

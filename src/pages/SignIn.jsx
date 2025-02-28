@@ -1,10 +1,10 @@
 import { FaGoogle } from "react-icons/fa";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/shared/Navbar";
 import Button from "../components/UI/Button";
-import Footer from "../components/Footer";
+import Footer from "../components/shared/Footer";
 import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
-import Loading from "../components/Loading";
+import Loading from "../components/shared/Loading";
 import { toast } from "react-toastify";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Footer from "../components/shared/Footer";
+import Navbar from "../components/shared/Navbar";
 import Button from "../components/UI/Button";
 import { useEffect } from "react";
 
@@ -8,10 +8,10 @@ const ServiceDetail = () => {
   const serviceData = useLoaderData();
   const service = serviceData.data.data;
 
-   useEffect(() => {
-      document.title = "R&R | Detials";
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    document.title = "R&R | Detials";
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -47,12 +47,8 @@ const ServiceDetail = () => {
               />
             </figure>
             <div className="space-y-4">
-              <h1 className="text-2xl font-bold">
-                {service.serviceName}
-              </h1>
-              <p className="leading-relaxed">
-                {service.description}
-              </p>
+              <h1 className="text-2xl font-bold">{service.serviceName}</h1>
+              <p className="leading-relaxed">{service.description}</p>
             </div>
 
             {/* Price and Booking Section */}

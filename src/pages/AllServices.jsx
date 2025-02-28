@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Footer from "../components/shared/Footer";
+import Navbar from "../components/shared/Navbar";
 import Button from "../components/UI/Button";
 import { useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";

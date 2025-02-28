@@ -1,11 +1,11 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Footer from "../components/shared/Footer";
+import Navbar from "../components/shared/Navbar";
 import Button from "../components/UI/Button";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import Loading from "../components/Loading";
+import Loading from "../components/shared/Loading";
 import { useEffect } from "react";
 
 const CreateServices = () => {
@@ -13,10 +13,10 @@ const CreateServices = () => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
-   useEffect(() => {
-      document.title = "R&R | Create Service";
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    document.title = "R&R | Create Service";
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = (e) => {
     setLoading(true);
@@ -43,10 +43,7 @@ const CreateServices = () => {
     };
 
     axiosSecure
-      .post(
-        `/api/services/add-service`,
-        newService
-      )
+      .post(`/api/services/add-service`, newService)
       .then(() => {
         setLoading(false);
         navigate(`/services/created/${user.email}`);

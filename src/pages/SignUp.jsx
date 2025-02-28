@@ -1,12 +1,12 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Footer from "../components/shared/Footer";
+import Navbar from "../components/shared/Navbar";
 import Button from "../components/UI/Button";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Loading from "../components/Loading";
+import Loading from "../components/shared/Loading";
 
 const SignUp = () => {
   const [showPwd, setShowPwd] = useState(false);
