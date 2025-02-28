@@ -7,9 +7,9 @@ import ServiceCategories from "../components/ServiceCategories";
 import RepairProcess from "../components/RepairProcess";
 import WebsiteInsights from "../components/WebsiteInsights";
 
-const Homepage = () => {
+const Home = () => {
   useEffect(() => {
-    document.title = "R&R | Home";
+    document.title = "Revive | Home";
     window.scrollTo(0, 0);
   }, []);
 
@@ -26,4 +26,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Home;
