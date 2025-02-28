@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import ServiceCard from "./ServiceCard";
-import Button from "./UI/Button";
+import ServiceCard from "../ServiceCard";
+import Button from "../UI/Button";
 import { useEffect, useState } from "react";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const PopularServices = () => {
   const [popularServices, setPopularServices] = useState([]);

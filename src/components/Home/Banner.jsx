@@ -1,5 +1,5 @@
 import StaggerText from "react-stagger-text";
-import phoneRepair from "../assets/phoneRepair.jpg";
+import phoneRepair from "../../assets/phoneRepair.jpg";
 
 const Banner = () => {
   return (
