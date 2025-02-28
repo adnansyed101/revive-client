@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="mb-4 md:mb-0">
             <h1 className="text-2xl font-bold flex gap-2 items-center">
               <FaScrewdriverWrench />
-              Revive & Rewire
+              Revive
             </h1>
           </div>
 
@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="text-center mt-4 text-gray-400 text-sm">
             <p>
               Copyright © {new Date().getFullYear()} - All right reserved by
-              Revive & Rewire
+              Revive
             </p>
           </div>
           {/* Social Media Links */}

@@ -105,7 +105,7 @@ const Navbar = () => {
           </div>
           <Link to="/" className="btn btn-ghost md:text-xl">
             <FaScrewdriverWrench />
-            Revive & Rewire
+            Revive
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
